@@ -1,0 +1,109 @@
+/* This CSS was written using SASS and Compass.
+ * @see http://compass-style.org/ 
+ -----------------------------------------------------------------------------*/
+/* Shared
+ -----------------------------------------------------------------------------*/
+div.tabs {
+  background-color: #222;
+  padding: 0 2em;
+}
+
+ul.tabs {
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+
+.tabs li {
+  color: #fff;
+  margin: 0 0.2em 0 0;
+  padding: 0;
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+}
+
+.tabs a {
+  color: #fc0;
+  display: block;
+}
+.tabs a:focus {
+  outline: 0;
+}
+
+/* Primary
+ -----------------------------------------------------------------------------*/
+.primary {
+  font-size: 1.077em;
+  line-height: 4ex;
+  margin-top: 1em;
+  overflow-y: auto;
+  height: 4ex;
+}
+.primary a {
+  padding: 0 1em;
+  -webkit-transition: none 1s;
+  -moz-transition: none 1s;
+  -o-transition: none 1s;
+  transition: none 1s;
+}
+.primary a:hover, .primary a:focus, .primary a:active, .primary a.active {
+  background-color: #fff;
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+  -webkit-border-radius: 6px 6px 0 0;
+  -moz-border-radius: 6px 6px 0 0;
+  -ms-border-radius: 6px 6px 0 0;
+  -o-border-radius: 6px 6px 0 0;
+  border-radius: 6px 6px 0 0;
+}
+
+/* Secondary
+ -----------------------------------------------------------------------------*/
+ul.secondary {
+  background-color: #fff;
+  line-height: 3ex;
+  margin: 0 -2em;
+  padding: 1em 1em 0 1em;
+  position: relative;
+}
+
+.secondary a {
+  background-color: #f8f8f8;
+  border: solid 1px #eee;
+  color: #000;
+  font-size: 0.846em;
+  font-weight: bold;
+  padding: 0.2em 1em;
+  text-transform: uppercase;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
+.secondary a:hover, .secondary a:focus, .secondary a:active, .secondary a.active {
+  background-color: #eee;
+  border-color: #ddd;
+  text-decoration: none;
+}
+
+/* Lil screens
+ -----------------------------------------------------------------------------*/
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  div.tabs {
+    padding: 0 1em;
+  }
+
+  ul.primary {
+    font-size: 0.846em;
+  }
+
+  .primary a {
+    padding: 0 0.5em;
+  }
+}

@@ -1,0 +1,7 @@
+.ndproject
+.idea
+*~
+.vagrant
+backups/*
+web/sites/default/files/*
+web/sites/default/settings.php
