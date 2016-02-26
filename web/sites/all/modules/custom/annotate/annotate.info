@@ -1,5 +1,0 @@
-; $Id$
-name = Annotate
-description = [annotate] Allow users to annotate text areas per-paragraph.
-core = 7.x
-files[] = annotate.module
