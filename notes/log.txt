@@ -1,0 +1,31 @@
+
+
+26.12.2014
+drush dl views_bulk_operations openlayers gmap calendar jcarousel views_accordion views_infinite_scroll
+
+drush en views_bulk_operations openlayers gmap calendar jcarousel views_accordion views_infinite_scroll
+
+views_bulk_operations +
+openlayers -> drush dl libraries proj4js geophp location
+gmap 
+calendar 
+jcarousel 
+views_accordion 
+views_infinite_scroll +
+
+15.01.2015
+https://www.drupal.org/project/smartcrop
+29.01.2015
+https://www.drupal.org/project/insert - позволяет вствлять картинки в textarea
+https://www.drupal.org/project/image_resize_filter - позволяет преобразовывать вствляемые катринки в миниатюры уменьшать разрешение катринок
+настривается непостредственно в самом поле image во вкладке insert
+https://www.drupal.org/project/pathologic - меняет абсолютные пути на относительные для вставляемых картинок
+https://www.lullabot.com/blog/podcasts - аудио подкасты про друпал
+https://www.drupal.org/forum - официальный форум друпала
+https://groups.drupal.org/events - конференции и митинги по Друпалу
+
+02.04.2015 
+Vagrant fall. I lost a lot of done exersize
+
+drush dl backup_migrate
+drush eb backup_migrate +
