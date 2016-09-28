@@ -2,7 +2,7 @@
 .idea
 *~
 .vagrant
-#notes/*
-#backups/*
-#web/sites/default/files/*
-#web/sites/default/settings.php
+# notes/*
+# backups/*
+# web/sites/default/files/*
+# web/sites/default/settings.php
