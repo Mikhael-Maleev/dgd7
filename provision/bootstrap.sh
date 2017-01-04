@@ -27,6 +27,8 @@ fi
 
 if [ ! -d /var/lib/mysql/drupal ]; then
 	mysqladmin -u root create drupal
+	a=$(ls -t1d /vagrant/backups/scheduled/*.gz |  head -n 1)
+	gunzip < $a | mysql -u root -h localhost drupal
 fi
 
 if [ -L /etc/apache2/sites-enabled/000-default ]; then
