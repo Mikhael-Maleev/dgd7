@@ -1,0 +1,3 @@
+name = X-ray
+description = show inner structure of the site
+core = 7.x

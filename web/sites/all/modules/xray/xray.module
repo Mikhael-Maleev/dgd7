@@ -1,0 +1,131 @@
+<?php
+/**
+ * @file
+ * Help developer investigate the site.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function xray_menu() {
+  $items['admin/reports/xray'] = array(
+    'title' => 'X-ray technical site overview',
+    'description' => 'See the internal structure of this site.',
+    'page callback' => 'xray_overview_page',
+    'access arguments' => array('access site reports'),
+  );
+  $items['admin/reports/xray/overview'] = array(
+    'title' => 'Overview',
+    'description' => "Technical overview of the site's internals.",
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => -10,
+  );
+  $items['admin/reports/xray/permissions'] = array(
+    'title' => 'Permissions',
+    'page callback' => 'xray_permission_names_page',
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 10,
+    'access arguments' => array('access site reports'),
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function xray_form_alter(&$form, &$form_state, $form_id) {
+  $form['xray_display_form_id'] = array(
+    '#type' => 'item',
+    '#title' => t('Form ID'),
+    '#markup' => $form_id,
+    '#theme_wrappers' => array('container__xray__form'),
+    '#attributes' => array('class' => array('xray')),
+    '#weight' => -100,
+  );
+  //debug($form, $form_id, TRUE);
+
+  //trigger_error('test');
+}
+
+/**
+ * Implements hook_help().
+ */
+function xray_help($path, $arg) {
+  if ($path == 'admin/structure') {
+    return t('This site has stuff!');
+  }
+  if ($path == 'admin/help#xray') {
+    return t('just help text');
+  }
+  switch ($path) {
+    case 'admin/structure':
+      return t('This site has stuff!');
+
+    break;
+    case 'admin/help#xray':
+      return t('just help text');
+
+    break;
+    case 'admin/appearance':
+      return _xray_admin_apperence();
+
+    break;
+  }
+}
+
+/**
+ * Help function.
+ */
+function _xray_admin_apperence() {
+  debug(xray_stats_enabled_themes());
+}
+
+/**
+ * Retrieve theme information.
+ */
+function xray_stats_enabled_themes() {
+  $themes = list_themes();
+  $num_hidden = 0;
+  $num_enabled = 0;
+  $summaries = array();
+  foreach ($themes as $theme) {
+    if (isset($theme->info['hidden']) && $theme->info['hidden']) {
+      $num_hidden++;
+    }
+    else {
+      if ($theme->status) {
+        $num_enabled++;
+        $summaries[$theme->info['name']] = array(
+          'regions' => count($theme->info['regions']),
+          'overlay_regions' => count($theme->info['overlay_regions']),
+          'regions_hidden' => count($theme->info['regions_hidden']),
+          'features' => count($theme->info['features']),
+          'kindsofstylesheets' => count($theme->info['stylesheets']),
+          'allstylesheets' => isset($theme->info['stylesheets']['all']) ? count($theme->info['stylesheets']['all']) : 0,
+        );
+      }
+    }
+  }
+  return compact('num_themes', 'num_hidden', 'num_enabled', 'summaries');
+}
+
+/**
+ * Help text for admin/appearance page.
+ */
+function _xray_help_admin_appearance() {
+  $output = '';
+  $data = xray_stats_enabled_themes();
+  $output .= format_plural(
+    $data['num_hidden'],
+    'There is one hidden theme.',
+    'There are @count hidden themes.'
+  );
+  return theme('xray_help', array('text' => $output));
+}
+
+/**
+ * Callback function.
+ */
+function xray_overview_page() {
+  return 'Yes';
+}
